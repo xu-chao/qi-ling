@@ -10,13 +10,13 @@ Widget titleWidget() {
     duration: normal,
     height: leftActive ? rCollapsed : 0,
     width: leftActive ? lExpanded : lCollapsed,
-    padding: EdgeInsets.symmetric(horizontal: 40),
+    padding: const EdgeInsets.symmetric(horizontal: 40),
     alignment: Alignment.centerLeft,
     child: AnimatedOpacity(
       duration: fast,
       opacity: leftActive ? 1 : 0,
-      child: Text(
-        'White noise',
+      child: const Text(
+        '祈·聆',
         style: TextStyle(fontSize: 17),
       ),
     ),
