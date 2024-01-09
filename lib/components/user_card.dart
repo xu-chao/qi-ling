@@ -26,8 +26,8 @@ Widget userCard() {
           child: AnimatedOpacity(
             duration: fast,
             opacity: leftActive ? 0 : 1,
-            child: Text(
-              'Akash Divya',
+            child: const Text(
+              '总喜欢做一些傻事去表达自己',
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
