@@ -17,7 +17,7 @@ Widget titleWidget() {
       opacity: leftActive ? 1 : 0,
       child: const Text(
         '祈·聆',
-        style: TextStyle(fontSize: 17),
+        style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
       ),
     ),
   );
