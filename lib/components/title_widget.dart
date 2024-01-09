@@ -1,4 +1,4 @@
-/// This is Title Widge, it resides on the Left-Top Section.
+/// This is Title Widget, it resides on the Left-Top Section.
 
 import 'package:flutter/material.dart';
 
