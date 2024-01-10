@@ -27,7 +27,7 @@ Widget categoryList({required int activeIndex}) {
 Future<Widget> categoryExpandedList({required int activeIndex}) async {
   await Future.delayed(fast);
   return ListView.builder(
-    padding: EdgeInsets.only(top: 15),
+    padding: EdgeInsets.only(top: 0),
     physics: BouncingScrollPhysics(),
     itemCount: database.length,
     itemBuilder: (BuildContext context, int index) {
