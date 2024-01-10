@@ -46,7 +46,7 @@ Widget userCard() {
               color: Colors.black,
               borderRadius: BorderRadius.circular(50),
               image: DecorationImage(
-                  image: AssetImage('assets/images/akash.jpg'),
+                  image: AssetImage('assets/images/qiling.jpg'),
                   fit: BoxFit.cover),
             ),
           ),
