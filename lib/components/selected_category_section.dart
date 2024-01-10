@@ -38,7 +38,7 @@ Widget selectedCategorySection({
                   duration: normal,
                   width: leftActive ? lExpanded : 0,
                   height: leftActive ? 70 : 0,
-                  padding: EdgeInsets.only(left: 40, top: 10),
+                  padding: EdgeInsets.only(left: 40, top: 0),
                   child: AnimatedOpacity(
                     duration: fast,
                     opacity: leftActive ? 1 : 0,

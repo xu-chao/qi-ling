@@ -81,8 +81,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     lMidExpanded = MediaQuery.of(context).size.height - 2 * rCollapsed - 24;
     lMidCollapsed = MediaQuery.of(context).size.height - lExpanded - 24;
     rMidExpanded = MediaQuery.of(context).size.height - 2 * rCollapsed - 24;
-    rMidCollapsed =
-        MediaQuery.of(context).size.height - rCollapsed - lExpanded - 24;
+    rMidCollapsed = MediaQuery.of(context).size.height - rCollapsed - lExpanded - 24;
   }
 
   void expandLeftSection() {
@@ -119,6 +118,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 GestureDetector(
                   onTap: () {},
                   child: AnimatedContainer(
+                    padding: EdgeInsets.zero,
                     //Left Section
                     duration: normal,
                     color: Colors.transparent,
