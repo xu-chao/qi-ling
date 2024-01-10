@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import '../main.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class PlayerControls extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class _PlayerControlsState extends State<PlayerControls>
   late bool isShuffle;
   late bool isBoostAudio;
   late double sliderValue;
+  final player = AudioPlayer();
 
   @override
   void initState() {
@@ -161,21 +163,24 @@ class _PlayerControlsState extends State<PlayerControls>
                   // Play/Pause Icon
                   alignment: Alignment.center, height: rCollapsed - 40,
                   width: rCollapsed - 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                   child: GestureDetector(
-                    onTap: () {
-                      isPlaying
-                          ? iconAnimController.reverse()
-                          : iconAnimController.forward();
+                    onTap: () async {
+                      isPlaying ? iconAnimController.reverse() : iconAnimController.forward();
                       isPlaying = isPlaying ? false : true;
+                      if (isPlaying) {
+                        await player.pause();
+                      } else {
+                        await player.play(UrlSource('assets/qiling/rainy.mp3'));
+                      }
                     },
                     child: AnimatedIcon(
                       icon: AnimatedIcons.play_pause,
                       progress: iconAnimController,
                     ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(50),
                   ),
                 ),
                 AnimatedContainer(
