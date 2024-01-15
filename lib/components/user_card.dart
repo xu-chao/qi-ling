@@ -6,8 +6,10 @@
 import 'package:flutter/material.dart';
 // 将html字符串解析为dom的库
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:get/get.dart';
 
 import '../main.dart';
+import '../routes/route_path.dart';
 
 Widget userCard() {
   late InAppWebViewController inAppWebViewController;
@@ -55,16 +57,17 @@ Widget userCard() {
               ),
             ),
             onTap: (){
-              InAppWebView(
-                initialUrlRequest: URLRequest(url: Uri.parse('http://150.158.103.146/qiling/NewYear/')),
-                onLoadStop: (controller, url) async {
-                  // 加载完成
-                  inAppWebViewController = controller;
-                  print("加载地址：$url");
-                  var html = await controller.getHtml();
-                  debugPrint("html是：${html.toString().trim()}");
-                },
-              );
+              Get.toNamed(RoutePath.kDonate);
+              // InAppWebView(
+              //   initialUrlRequest: URLRequest(url: Uri.parse('http://150.158.103.146/qiling/NewYear/')),
+              //   onLoadStop: (controller, url) async {
+              //     // 加载完成
+              //     inAppWebViewController = controller;
+              //     print("加载地址：$url");
+              //     var html = await controller.getHtml();
+              //     debugPrint("html是：${html.toString().trim()}");
+              //   },
+              // );
             },
           )
         ),

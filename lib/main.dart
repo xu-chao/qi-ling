@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qiling/routes/app_pages.dart';
+import 'package:qiling/routes/route_path.dart';
 
 import 'bloc/active_index_bloc.dart';
 import 'components/category_list.dart';
@@ -9,6 +11,7 @@ import 'components/selected_category_section.dart';
 import 'components/title_widget.dart';
 import 'components/user_card.dart';
 import 'data/category_database.dart';
+import 'package:get/get.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -42,9 +45,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-
+      getPages: AppPages.routes,
       // HomePage is the main page.
       home: HomePage(),
     );
