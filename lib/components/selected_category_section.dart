@@ -56,7 +56,7 @@ Widget selectedCategorySection({
                 ),
               ],
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             itemsList(activeIndex: activeIndex),
           ],
         ),
