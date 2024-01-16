@@ -9,6 +9,7 @@ import '../data/category_database.dart';
 import '../main.dart';
 import './selected_category_card.dart';
 import './items_list.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 Widget selectedCategorySection({
   required int activeIndex,
@@ -96,6 +97,7 @@ Widget selectedCategorySection({
                 child: IconButton(
                   onPressed: () {
                     trigger();
+                    BotToast.showText(text:"有点喜欢你");
                   },
                   icon: database[activeIndex].categoryIcon,
                   iconSize: leftActive ? 35 : 30,

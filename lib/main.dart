@@ -11,6 +11,7 @@ import 'components/title_widget.dart';
 import 'components/user_card.dart';
 import 'data/category_database.dart';
 import 'package:get/get.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,6 +49,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
+      builder: BotToastInit(), //1. call BotToastInit
+      navigatorObservers: [BotToastNavigatorObserver()],
       // HomePage is the main page.
       home: const HomePage(),
     );
