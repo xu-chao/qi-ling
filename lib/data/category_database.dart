@@ -16,7 +16,7 @@ List<_CategoryData> database = [
         audioImagePath: 'assets/images/rain_01.jpg',
       ),
       _AudioData(
-        audioTitle: '鸣叫·夏日叶蝉',
+        audioTitle: '鸣叫·夏日夜蝉',
         audioLength: 104,
         audioImagePath: 'assets/images/rain_02.jpg',
       ),
