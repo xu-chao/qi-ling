@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qiling/routes/app_pages.dart';
-import 'package:qiling/routes/route_path.dart';
 
 import 'bloc/active_index_bloc.dart';
 import 'components/category_list.dart';
@@ -15,10 +14,10 @@ import 'package:get/get.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.grey[50],
-    statusBarIconBrightness: Brightness.dark,
-    systemNavigationBarColor: Colors.grey[50],
-    systemNavigationBarIconBrightness: Brightness.dark,
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: Brightness.light,
+    // systemNavigationBarColor: Colors.grey[50],
+    // systemNavigationBarIconBrightness: Brightness.dark,
   ));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
