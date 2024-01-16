@@ -10,7 +10,7 @@ class NewYearWebLoginPage extends GetView<NewYearWebLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         title: const Text("很高兴认识你！！！"),
       ),
       body: InAppWebView(
