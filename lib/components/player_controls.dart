@@ -8,6 +8,8 @@ import 'package:flutter_sound/public/flutter_sound_player.dart';
 import '../main.dart';
 
 class PlayerControls extends StatefulWidget {
+  const PlayerControls({super.key});
+
   @override
   _PlayerControlsState createState() => _PlayerControlsState();
 }
@@ -59,7 +61,7 @@ class _PlayerControlsState extends State<PlayerControls>
   // This Function removes Seek Bar
   Future<Widget> removeSeekBar() async {
     // await Future.delayed(superFast);
-    return Container(height: 0, width: 0);
+    return const SizedBox(height: 0, width: 0);
   }
 
   /// 播放白噪音
@@ -103,7 +105,7 @@ class _PlayerControlsState extends State<PlayerControls>
         });
       },
       child: Icon(
-        IconData(0xe80c, fontFamily: 'AppIcons'),
+        const IconData(0xe80c, fontFamily: 'AppIcons'),
         size: iconSize,
         color: isShuffle ? Colors.blue : Colors.grey[600],
       ),
@@ -118,7 +120,7 @@ class _PlayerControlsState extends State<PlayerControls>
         });
       },
       child: Icon(
-        IconData(0xe804, fontFamily: 'AppIcons'),
+        const IconData(0xe804, fontFamily: 'AppIcons'),
         size: iconSize,
         color: isBoostAudio ? Colors.blue : Colors.grey[600],
       ),
@@ -132,11 +134,7 @@ class _PlayerControlsState extends State<PlayerControls>
       duration: normal,
       height: leftActive ? rCollapsed : lExpanded,
       width: leftActive ? lExpanded : lCollapsed,
-      padding: leftActive
-          ? EdgeInsets.symmetric(
-              horizontal: 40,
-            )
-          : EdgeInsets.zero,
+      padding: leftActive ? const EdgeInsets.symmetric(horizontal: 40) : EdgeInsets.zero,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -170,7 +168,7 @@ class _PlayerControlsState extends State<PlayerControls>
             height: leftActive ? 0 : 100,
             width: leftActive ? 0 : 120,
             child: FutureBuilder(
-              initialData: Container(width: 0.0, height: 0.0),
+              initialData: const SizedBox(width: 0.0, height: 0.0),
               future: leftActive
                   ? removeSeekBar()
                   : seekBar(
@@ -186,7 +184,7 @@ class _PlayerControlsState extends State<PlayerControls>
               },
             ),
           ),
-          Container(
+          SizedBox(
             height: rCollapsed,
             child: Row(
               mainAxisAlignment: leftActive
@@ -205,6 +203,8 @@ class _PlayerControlsState extends State<PlayerControls>
                     onTap: () async {
                       isPlaying ? iconAnimController.reverse() : iconAnimController.forward();
                       isPlaying = isPlaying ? false : true;
+                      // 播放白噪音
+                      isPlaying ? startPlayer() : stopPlayer();
                     },
                     child: AnimatedIcon(
                       icon: AnimatedIcons.play_pause,
@@ -218,7 +218,7 @@ class _PlayerControlsState extends State<PlayerControls>
                   height: leftActive ? 100 : 0,
                   width: leftActive ? 120 : 0,
                   child: FutureBuilder(
-                    initialData: Container(width: 0.0, height: 0.0),
+                    initialData: const SizedBox(width: 0.0, height: 0.0),
                     future: leftActive
                         ? seekBar(
                             thumbRadius: leftActive ? 5 : 0,
