@@ -126,27 +126,35 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     duration: normal,
                     color: Colors.transparent,
                     width: leftActive ? lExpanded : lCollapsed,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        // Top Left Widget: App Title
-                        titleWidget(),
+                    child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      removeBottom: true,
+                      child:ListView(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              // Top Left Widget: App Title
+                              titleWidget(),
 
-                        // Mid Left Widget: Category Info & Contents
-                        selectedCategorySection(
-                          activeIndex: snapshot.data,
-                          totalItems: database[snapshot.data].audioList.length,
-                          categoryTag: database[snapshot.data].categoryTag,
-                          imagePath: database[snapshot.data].imagePath,
-                          categoryTitle: database[snapshot.data].categoryTitle,
-                          trigger: expandLeftSection,
-                        ),
+                              // Mid Left Widget: Category Info & Contents
+                              selectedCategorySection(
+                                activeIndex: snapshot.data,
+                                totalItems: database[snapshot.data].audioList.length,
+                                categoryTag: database[snapshot.data].categoryTag,
+                                imagePath: database[snapshot.data].imagePath,
+                                categoryTitle: database[snapshot.data].categoryTitle,
+                                trigger: expandLeftSection,
+                              ),
 
-                        // Bottom Left Widget: Player Controls
-                        PlayerControls(),
-                      ],
-                    ),
+                              // Bottom Left Widget: Player Controls
+                              PlayerControls(),
+                            ],
+                          ),
+                        ],
+                      ),),
                   ),
                 ),
                 Container(
