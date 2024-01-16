@@ -1,11 +1,11 @@
-/// This widget contains Player controlls which animates
-/// when Left Bottom section Collapses or Expands.
-
-import 'package:flutter/material.dart';
+import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_sound/public/flutter_sound_player.dart';
+
 import '../main.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class PlayerControls extends StatefulWidget {
   @override
@@ -19,7 +19,8 @@ class _PlayerControlsState extends State<PlayerControls>
   late bool isShuffle;
   late bool isBoostAudio;
   late double sliderValue;
-  final player = AudioPlayer();
+
+  FlutterSoundPlayer? _player;
 
   @override
   void initState() {
@@ -59,6 +60,39 @@ class _PlayerControlsState extends State<PlayerControls>
   Future<Widget> removeSeekBar() async {
     // await Future.delayed(superFast);
     return Container(height: 0, width: 0);
+  }
+
+  /// 播放白噪音
+  void startPlayer() async {
+    isPlaying = true;
+    final filePath = await rootBundle.load('assets/sounds/rainy.mp3');
+    if (_player != null) {
+      await _player?.stopPlayer();
+      await _player?.closePlayer();
+    }
+    _player = FlutterSoundPlayer();
+    await _player?.openPlayer();
+    _player?.startPlayer(
+        fromDataBuffer: filePath.buffer.asUint8List(),
+        whenFinished: () {
+          _player?.closePlayer();
+          _player = null;
+          Timer(const Duration(milliseconds: 500), () {
+            if (isPlaying) {
+              startPlayer();
+            }
+          });
+        });
+  }
+
+  /// 停止播放白噪音
+  void stopPlayer() async {
+    isPlaying = false;
+    if (_player?.isPlaying == true) {
+      await _player?.stopPlayer();
+    }
+    _player?.closePlayer();
+    _player = null;
   }
 
   Widget shuffleIcon(double iconSize) {
@@ -171,11 +205,6 @@ class _PlayerControlsState extends State<PlayerControls>
                     onTap: () async {
                       isPlaying ? iconAnimController.reverse() : iconAnimController.forward();
                       isPlaying = isPlaying ? false : true;
-                      if (isPlaying) {
-                        await player.pause();
-                      } else {
-                        await player.play(UrlSource('assets/qiling/rainy.mp3'));
-                      }
                     },
                     child: AnimatedIcon(
                       icon: AnimatedIcons.play_pause,

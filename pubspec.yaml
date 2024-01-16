@@ -49,7 +49,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
   # 音频播放
-  audioplayers: ^5.2.1
+  flutter_sound: ^9.2.13
   #WebView
   flutter_inappwebview: ^5.8.0
   # 框架、工具
