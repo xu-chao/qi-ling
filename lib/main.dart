@@ -22,7 +22,7 @@ void main() {
   ));
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 // Global Variables
@@ -34,9 +34,9 @@ double lMidExpanded = 0;
 double lMidCollapsed = 0;
 double rMidExpanded = 0;
 double rMidCollapsed = 0;
-Duration normal = Duration(milliseconds: 300);
-Duration fast = Duration(milliseconds: 200);
-Duration superFast = Duration(milliseconds: 100);
+Duration normal = const Duration(milliseconds: 300);
+Duration fast = const Duration(milliseconds: 200);
+Duration superFast = const Duration(milliseconds: 100);
 bool leftActive = true;
 
 class MyApp extends StatelessWidget {
@@ -49,12 +49,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
       // HomePage is the main page.
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -114,7 +116,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             // Base Widget.
-            padding: EdgeInsets.only(top: 24),
+            padding: const EdgeInsets.only(top: 24),
             child: Row(
               // This Row separtaes the Left Section from the one on the Right Side.
               children: <Widget>[
