@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 List<_CategoryData> database = [
   _CategoryData(
-    categoryIcon: Icon(IconData(0xe80a, fontFamily: 'CategoryIcons')),
+    categoryIcon: const Icon(IconData(0xe80a, fontFamily: 'CategoryIcons')),
     categoryTitle: '雨声',
     categoryTag: '沉浸·烟雨江南',
     categoryInfo:
@@ -28,7 +28,7 @@ List<_CategoryData> database = [
     ],
   ),
   _CategoryData(
-    categoryIcon: Icon(IconData(0xe806, fontFamily: 'CategoryIcons')),
+    categoryIcon: const Icon(IconData(0xe806, fontFamily: 'CategoryIcons')),
     categoryTitle: '森林',
     categoryTag: '身处神奇的森林',
     categoryInfo:
@@ -58,7 +58,7 @@ List<_CategoryData> database = [
     ],
   ),
   _CategoryData(
-    categoryIcon: Icon(IconData(0xe808, fontFamily: 'CategoryIcons')),
+    categoryIcon: const Icon(IconData(0xe808, fontFamily: 'CategoryIcons')),
     categoryTitle: '大自然',
     categoryTag: '母亲的存在之美',
     categoryInfo:
@@ -93,7 +93,7 @@ List<_CategoryData> database = [
     ],
   ),
   _CategoryData(
-    categoryIcon: Icon(IconData(0xe805, fontFamily: 'CategoryIcons')),
+    categoryIcon: const Icon(IconData(0xe805, fontFamily: 'CategoryIcons')),
     categoryTitle: '节奏',
     categoryTag: '节奏',
     categoryInfo:
@@ -123,7 +123,7 @@ List<_CategoryData> database = [
     ],
   ),
   _CategoryData(
-    categoryIcon: Icon(IconData(0xe809, fontFamily: 'CategoryIcons')),
+    categoryIcon: const Icon(IconData(0xe809, fontFamily: 'CategoryIcons')),
     categoryTitle: '其他',
     categoryTag: '正如你的心所说',
     categoryInfo:

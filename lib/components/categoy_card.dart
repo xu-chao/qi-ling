@@ -55,14 +55,14 @@ class _CategoryCardState extends State<CategoryCard>
               child: ListView(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.horizontal,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                     height: 30,
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 4.5, bottom: 8.5),
+                    padding: const EdgeInsets.only(top: 4.5, bottom: 8.5),
                     child: Container(
                       height: 7,
                       width: 7,
@@ -74,7 +74,7 @@ class _CategoryCardState extends State<CategoryCard>
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 13,
                     height: 13,
                   ),
@@ -86,43 +86,17 @@ class _CategoryCardState extends State<CategoryCard>
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           AnimatedContainer(
             // Category Card
             duration: normal,
             width: leftActive ? 0 : rExpanded,
             height: leftActive ? 0 : 180,
             alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 50),
+            padding: const EdgeInsets.symmetric(horizontal: 50),
             child: Container(
-              padding: EdgeInsets.fromLTRB(20, 20, 30, 30),
+              padding: const EdgeInsets.fromLTRB(20, 20, 30, 30),
               alignment: Alignment.centerLeft,
-              child: ListView(
-                //Category Card Info
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  Text(
-                    widget.totalItems < 10
-                        ? '0${widget.totalItems}'
-                        : '${widget.totalItems}',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    widget.categoryTag,
-                    style: TextStyle(
-                      color: Colors.white,
-                      height: 1.5,
-                    ),
-                    maxLines: 2,
-                  ),
-                ],
-              ),
               decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(10),
@@ -138,10 +112,36 @@ class _CategoryCardState extends State<CategoryCard>
                           : Colors.black.withOpacity(0.1),
                       blurRadius: 10,
                       spreadRadius: 1,
-                      offset: Offset(10, 12)),
+                      offset: const Offset(10, 12)),
                 ],
               ),
-              constraints: BoxConstraints(minHeight: 200),
+              constraints: const BoxConstraints(minHeight: 200),
+              child: ListView(
+                //Category Card Info
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  Text(
+                    widget.totalItems < 10
+                        ? '0${widget.totalItems}'
+                        : '${widget.totalItems}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    widget.categoryTag,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      height: 1.5,
+                    ),
+                    maxLines: 2,
+                  ),
+                ],
+              ),
             ),
           ),
           AnimatedContainer(
@@ -165,7 +165,7 @@ Future<Widget> showInfo(categoryInfo) async {
     padding: const EdgeInsets.only(left: 70, right: 50),
     child: Column(
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 25,
           child: ListView(
             padding: EdgeInsets.zero,
@@ -173,16 +173,16 @@ Future<Widget> showInfo(categoryInfo) async {
             children: <Widget>[
               GestureDetector(
                 onTap: () {},
-                child: Icon(
+                child: const Icon(
                   IconData(0xe80b, fontFamily: 'AppIcons'),
                   size: 18,
                   color: Colors.grey,
                 ),
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               GestureDetector(
                 onTap: () {},
-                child: Icon(
+                child: const Icon(
                   IconData(0xe801, fontFamily: 'AppIcons'),
                   size: 18,
                   color: Colors.grey,
@@ -191,7 +191,7 @@ Future<Widget> showInfo(categoryInfo) async {
             ],
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           categoryInfo,
           style: TextStyle(
@@ -207,18 +207,18 @@ Future<Widget> showInfo(categoryInfo) async {
 }
 
 Future<Widget> removeInfo() async {
-  return Container(height: 0, width: 0);
+  return const SizedBox(height: 0, width: 0);
 }
 
 Widget infoWidget({required String categoryInfo, required int index, required int activeIndex}) {
   if (index == activeIndex) {
     return FutureBuilder(
-        initialData: Container(height: 0, width: 0),
+        initialData: const SizedBox(height: 0, width: 0),
         future: leftActive ? removeInfo() : showInfo(categoryInfo),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return snapshot.data;
         });
   } else {
-    return Container(height: 0, width: 0);
+    return const SizedBox(height: 0, width: 0);
   }
 }

@@ -13,7 +13,7 @@ Widget categoryList({required int activeIndex}) {
     height: rMidExpanded,
     width: leftActive ? rCollapsed : rExpanded,
     child: FutureBuilder(
-      initialData: Container(width: 0.0, height: 0.0),
+      initialData: const SizedBox(width: 0.0, height: 0.0),
       future: leftActive
           ? categoryCollapsedList(activeIndex: activeIndex)
           : categoryExpandedList(activeIndex: activeIndex),
@@ -27,8 +27,8 @@ Widget categoryList({required int activeIndex}) {
 Future<Widget> categoryExpandedList({required int activeIndex}) async {
   await Future.delayed(fast);
   return ListView.builder(
-    padding: EdgeInsets.only(top: 0),
-    physics: BouncingScrollPhysics(),
+    padding: const EdgeInsets.only(top: 0),
+    physics: const BouncingScrollPhysics(),
     itemCount: database.length,
     itemBuilder: (BuildContext context, int index) {
       return Column(
@@ -42,7 +42,7 @@ Future<Widget> categoryExpandedList({required int activeIndex}) async {
             totalItems: database[index].audioList.length,
             categoryInfo: database[index].categoryInfo,
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
         ],
       );
     },
@@ -53,7 +53,7 @@ Future<Widget> categoryCollapsedList({required int activeIndex}) async {
   await Future.delayed(fast);
   return ListView.builder(
     padding: EdgeInsets.zero,
-    physics: BouncingScrollPhysics(),
+    physics: const BouncingScrollPhysics(),
     itemCount: database.length,
     itemBuilder: (BuildContext context, int index) {
       return Column(
