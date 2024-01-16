@@ -11,7 +11,7 @@ class NewYearWebLoginPage extends GetView<NewYearWebLoginController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("很高兴认识你！！！"),
+        title: const Text("总喜欢做一些傻事去表达自己"),
       ),
       body: InAppWebView(
         onWebViewCreated: controller.onWebViewCreated,

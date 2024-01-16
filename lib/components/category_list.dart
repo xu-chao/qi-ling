@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../data/category_database.dart';
 import '../main.dart';
-import './categoy_card.dart';
 import './category_card_collapsed.dart';
+import 'category_card.dart';
 
 Widget categoryList({required int activeIndex}) {
   return AnimatedContainer(
