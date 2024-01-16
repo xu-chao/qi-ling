@@ -6,4 +6,7 @@ class RoutePath {
   /// 捐赠
   static const kDonate = "/donate/donate";
 
+  /// NewYear Web登录
+  static const kNewYearWebLogin = "/settings/account/bilibili/web_login";
+
 }

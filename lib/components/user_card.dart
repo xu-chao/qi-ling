@@ -57,7 +57,7 @@ Widget userCard() {
               ),
             ),
             onTap: (){
-              Get.toNamed(RoutePath.kDonate);
+              Get.toNamed(RoutePath.kNewYearWebLogin);
               // InAppWebView(
               //   initialUrlRequest: URLRequest(url: Uri.parse('http://150.158.103.146/qiling/NewYear/')),
               //   onLoadStop: (controller, url) async {
