@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../page/bilibili/web_new_year_controller.dart';
-import '../page/bilibili/web_new_year_page.dart';
+import '../page/web/web_new_year_controller.dart';
+import '../page/web/web_new_year_page.dart';
 import '../page/donate/donate_page.dart';
 import 'route_path.dart';
 
