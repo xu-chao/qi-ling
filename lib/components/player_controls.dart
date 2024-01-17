@@ -72,7 +72,7 @@ class _PlayerControlsState extends State<PlayerControls>
   /// 播放白噪音
   void playSound() async {
     _player.play();
-    _player.setAsset('assets/sounds/rainy.mp3');
+    _player.setAsset('assets/sounds/jay.mp3');
     setState(() {
       isPlaying = true;
     });
