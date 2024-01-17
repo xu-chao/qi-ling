@@ -116,6 +116,7 @@ class _PlayerControlsState extends State<PlayerControls>
         setState(() {
           isBoostAudio = isBoostAudio ? false : true;
         });
+        _player.seek(Duration(seconds: _player.position.inSeconds - 15));
       },
       child: Icon(
         const IconData(0xe804, fontFamily: 'AppIcons'),
