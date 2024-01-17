@@ -26,7 +26,7 @@ Widget userCard() {
           duration: normal,
           height: rCollapsed,
           width: leftActive ? 0 : rExpanded - rCollapsed,
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           alignment: Alignment.centerLeft,
           child: AnimatedOpacity(
             duration: fast,
