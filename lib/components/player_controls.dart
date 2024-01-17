@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:audio_session/audio_session.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:qiling/components/player_common.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../main.dart';
 
@@ -44,15 +47,18 @@ class _PlayerControlsState extends State<PlayerControls>
         trackHeight: trackHeight,
         inactiveTrackColor: Colors.grey[300],
       ),
-      child: Slider(
-        value: sliderValue,
-        onChanged: (double value) {
-          setState(() {
-            sliderValue = value;
-          });
+      child: StreamBuilder<PositionData>(
+        stream: _positionDataStream,
+        builder: (context, snapshot) {
+          final positionData = snapshot.data;
+          return SeekBar(
+            duration: positionData?.duration ?? Duration.zero,
+            position: positionData?.position ?? Duration.zero,
+            bufferedPosition:
+            positionData?.bufferedPosition ?? Duration.zero,
+            onChangeEnd: _player.seek,
+          );
         },
-        min: 0,
-        max: 1,
       ),
     );
   }
@@ -69,10 +75,39 @@ class _PlayerControlsState extends State<PlayerControls>
     super.dispose();
   }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      _player.stop();
+    }
+  }
+
+  Stream<PositionData> get _positionDataStream =>
+      Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+          _player.positionStream,
+          _player.bufferedPositionStream,
+          _player.durationStream,
+              (position, bufferedPosition, duration) => PositionData(
+              position, bufferedPosition, duration ?? Duration.zero));
+
   /// 播放白噪音
   void playSound() async {
     _player.play();
-    _player.setAsset('assets/sounds/jay.mp3');
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.speech());
+    _player.playbackEventStream.listen((event) {},
+        onError: (Object e, StackTrace stackTrace) {
+          if (kDebugMode) {
+            print('播放报错: $e');
+          }
+        });
+    try {
+      await _player.setAsset('assets/sounds/jay.mp3');
+    } catch (e) {
+      if (kDebugMode) {
+        print('播放报错: $e');
+      }
+    }
     setState(() {
       isPlaying = true;
     });
