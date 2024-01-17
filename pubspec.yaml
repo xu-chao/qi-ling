@@ -48,9 +48,11 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+  # 录音
+  # flutter_sound: ^9.2.13
   # 音频播放
-  flutter_sound: ^9.2.13
-  #WebView
+  just_audio: ^0.9.36
+  # WebView
   flutter_inappwebview: ^5.8.0
   # 框架、工具
   get: ^4.6.6 #状态管理、路由管理、国际化

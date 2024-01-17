@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_sound/public/flutter_sound_player.dart';
+import 'package:just_audio/just_audio.dart';
 
 import '../main.dart';
 
@@ -22,7 +22,7 @@ class _PlayerControlsState extends State<PlayerControls>
   late bool isBoostAudio;
   late double sliderValue;
 
-  FlutterSoundPlayer? _player;
+  late final _player = AudioPlayer();
 
   @override
   void initState() {
@@ -35,8 +35,7 @@ class _PlayerControlsState extends State<PlayerControls>
   }
 
   // This function displays SeekBar
-  Future<Widget> seekBar(
-      {required double thumbRadius, required double overlayRadius, required double trackHeight}) async {
+  Future<Widget> seekBar({required double thumbRadius, required double overlayRadius, required double trackHeight}) async {
     await Future.delayed(fast);
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
@@ -68,33 +67,29 @@ class _PlayerControlsState extends State<PlayerControls>
   void startPlayer() async {
     isPlaying = true;
     final filePath = await rootBundle.load('assets/sounds/rainy.mp3');
+    _player.setFilePath('assets/sounds/rainy.mp3');
     if (_player != null) {
-      await _player?.stopPlayer();
-      await _player?.closePlayer();
+      await _player?.stop();
+      await _player?.dispose();
     }
-    _player = FlutterSoundPlayer();
-    await _player?.openPlayer();
-    _player?.startPlayer(
-        fromDataBuffer: filePath.buffer.asUint8List(),
-        whenFinished: () {
-          _player?.closePlayer();
-          _player = null;
-          Timer(const Duration(milliseconds: 500), () {
-            if (isPlaying) {
-              startPlayer();
-            }
-          });
-        });
+    _player.play();
   }
 
   /// 停止播放白噪音
   void stopPlayer() async {
     isPlaying = false;
-    if (_player?.isPlaying == true) {
-      await _player?.stopPlayer();
+    if (_player?.playing == true) {
+      await _player?.stop();
     }
-    _player?.closePlayer();
-    _player = null;
+    _player?.dispose();
+  }
+
+  /// 暂停播放白噪音
+  void pausePlayer() async {
+    isPlaying = false;
+    if (_player?.playing == true) {
+      await _player?.pause();
+    }
   }
 
   Widget shuffleIcon(double iconSize) {
@@ -204,7 +199,7 @@ class _PlayerControlsState extends State<PlayerControls>
                       isPlaying ? iconAnimController.reverse() : iconAnimController.forward();
                       isPlaying = isPlaying ? false : true;
                       // 播放白噪音
-                      isPlaying ? startPlayer() : stopPlayer();
+                      isPlaying ? startPlayer() : pausePlayer();
                     },
                     child: AnimatedIcon(
                       icon: AnimatedIcons.play_pause,
