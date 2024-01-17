@@ -32,7 +32,6 @@ class _PlayerControlsState extends State<PlayerControls>
     sliderValue = 0;
     isShuffle = false;
     isBoostAudio = false;
-    _player.setAsset('assets/sounds/rainy.mp3');
   }
 
   // This function displays SeekBar
@@ -64,27 +63,35 @@ class _PlayerControlsState extends State<PlayerControls>
     return const SizedBox(height: 0, width: 0);
   }
 
-  /// 播放白噪音
-  void startPlayer() async {
-    isPlaying = true;
-    _player.play();
+  @override
+  void dispose() {
+    _player.dispose();
+    super.dispose();
   }
 
-  /// 停止播放白噪音
-  void stopPlayer() async {
-    isPlaying = false;
-    if (_player?.playing == true) {
-      await _player?.stop();
-    }
-    _player?.dispose();
+  /// 播放白噪音
+  void playSound() async {
+    _player.play();
+    _player.setAsset('assets/sounds/rainy.mp3');
+    setState(() {
+      isPlaying = true;
+    });
   }
 
   /// 暂停播放白噪音
-  void pausePlayer() async {
-    isPlaying = false;
-    if (_player?.playing == true) {
-      await _player?.pause();
-    }
+  void pauseSound() {
+    _player.pause();
+    setState(() {
+      isPlaying = false;
+    });
+  }
+
+  /// 停止播放白噪音
+  void stopSound() {
+    _player.stop();
+    setState(() {
+      isPlaying = false;
+    });
   }
 
   Widget shuffleIcon(double iconSize) {
@@ -194,7 +201,7 @@ class _PlayerControlsState extends State<PlayerControls>
                       isPlaying ? iconAnimController.reverse() : iconAnimController.forward();
                       isPlaying = isPlaying ? false : true;
                       // 播放白噪音
-                      isPlaying ? startPlayer() : pausePlayer();
+                      isPlaying ? playSound() : pauseSound();
                     },
                     child: AnimatedIcon(
                       icon: AnimatedIcons.play_pause,
