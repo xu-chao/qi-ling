@@ -22,7 +22,7 @@ class _PlayerControlsState extends State<PlayerControls>
   late bool isBoostAudio;
   late double sliderValue;
 
-  late final _player = AudioPlayer();
+  final _player = AudioPlayer();
 
   @override
   void initState() {
@@ -32,6 +32,7 @@ class _PlayerControlsState extends State<PlayerControls>
     sliderValue = 0;
     isShuffle = false;
     isBoostAudio = false;
+    _player.setAsset('assets/sounds/rainy.mp3');
   }
 
   // This function displays SeekBar
@@ -66,12 +67,6 @@ class _PlayerControlsState extends State<PlayerControls>
   /// 播放白噪音
   void startPlayer() async {
     isPlaying = true;
-    final filePath = await rootBundle.load('assets/sounds/rainy.mp3');
-    _player.setFilePath('assets/sounds/rainy.mp3');
-    if (_player != null) {
-      await _player?.stop();
-      await _player?.dispose();
-    }
     _player.play();
   }
 
