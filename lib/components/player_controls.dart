@@ -275,6 +275,7 @@ class _PlayerControlsState extends State<PlayerControls>
                     child: boostAudioIcon(leftActive ? 15 : 0),
                   ),
                 ),
+                const SizedBox(width: 5,),
                 AnimatedContainer(
                   duration: normal,
                   height: leftActive ? 20 : 0,
