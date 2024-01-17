@@ -52,6 +52,7 @@ dev_dependencies:
   # flutter_sound: ^9.2.13
   # 音频播放
   just_audio: ^0.9.36
+  just_audio_background: ^0.0.1-beta.11
   # WebView
   flutter_inappwebview: ^5.8.0
   # 框架、工具
