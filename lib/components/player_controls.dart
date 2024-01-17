@@ -100,6 +100,7 @@ class _PlayerControlsState extends State<PlayerControls>
         setState(() {
           isShuffle = isShuffle ? false : true;
         });
+        isShuffle ? _player.setLoopMode(LoopMode.one) : _player.setLoopMode(LoopMode.off);
       },
       child: Icon(
         const IconData(0xe80c, fontFamily: 'AppIcons'),
