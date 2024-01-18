@@ -35,7 +35,7 @@ class _PlayerControlsState extends State<PlayerControls>
       tag: MediaItem(
           id: '${_nextMediaId++}',
           album: "祈·聆",
-          title: "白噪音",
+          title: "想去了解你",
           // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
           // artUri: Uri.parse('https://p1.music.126.net/iFZ_nw2V86IFk90dc50kdQ==/109951166961388699.jpg?param=300y300'),
           artUri: Uri.parse('http://150.158.103.146/qiling/qiling.jpg'),
@@ -50,7 +50,7 @@ class _PlayerControlsState extends State<PlayerControls>
       tag: MediaItem(
           id: '${_nextMediaId++}',
           album: "祈·聆",
-          title: "喜欢你",
+          title: "有点喜欢你",
           // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
           artUri: Uri.parse('http://150.158.103.146/qiling/qiling.jpg'),
           artist: "许超",
