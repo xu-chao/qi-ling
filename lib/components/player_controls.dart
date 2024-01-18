@@ -39,7 +39,13 @@ class _PlayerControlsState extends State<PlayerControls>
             id: '${_nextMediaId++}',
             album: "祈·聆",
             title: "白噪音",
+            // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
             artUri: Uri.parse('https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg'),
+            artist: "齐玲",
+            genre: "空灵",
+            displayTitle: "有点喜欢你",
+            displaySubtitle: "有点喜欢你",
+            displayDescription: "有点喜欢你专辑"
           ),
         )
       ]);
