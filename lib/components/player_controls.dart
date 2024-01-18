@@ -29,26 +29,38 @@ class _PlayerControlsState extends State<PlayerControls>
 
   final _player = AudioPlayer();
 
-  final _playlist = ConcatenatingAudioSource(
-      children: [
-        ClippingAudioSource(
-          // start: const Duration(seconds: 60),
-          // end: const Duration(seconds: 90),
-          child: AudioSource.asset("assets/sounds/jay.mp3"),
-          tag: MediaItem(
-            id: '${_nextMediaId++}',
-            album: "祈·聆",
-            title: "白噪音",
-            // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
-            artUri: Uri.parse('https://p1.music.126.net/iFZ_nw2V86IFk90dc50kdQ==/109951166961388699.jpg?param=300y300'),
-            artist: "齐玲",
-            genre: "空灵",
-            displayTitle: "有点喜欢你",
-            displaySubtitle: "有点喜欢你",
-            displayDescription: "有点喜欢你专辑"
-          ),
-        )
-      ]);
+  final _playlist = ConcatenatingAudioSource(children: [
+    ClippingAudioSource(
+      child: AudioSource.asset("assets/sounds/jay.mp3"),
+      tag: MediaItem(
+          id: '${_nextMediaId++}',
+          album: "祈·聆",
+          title: "白噪音",
+          // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
+          artUri: Uri.parse('https://p1.music.126.net/iFZ_nw2V86IFk90dc50kdQ==/109951166961388699.jpg?param=300y300'),
+          artist: "齐玲",
+          genre: "空灵",
+          displayTitle: "有点喜欢你",
+          displaySubtitle: "有点喜欢你",
+          displayDescription: "有点喜欢你专辑"
+      ),
+    ),
+    AudioSource.asset(
+      "assets/sounds/jay.mp3",
+      tag: MediaItem(
+          id: '${_nextMediaId++}',
+          album: "祈·聆",
+          title: "喜欢你",
+          // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
+          artUri: Uri.parse('https://p1.music.126.net/iFZ_nw2V86IFk90dc50kdQ==/109951166961388699.jpg?param=300y300'),
+          artist: "许超",
+          genre: "好听",
+          displayTitle: "有点喜欢你",
+          displaySubtitle: "有点喜欢你",
+          displayDescription: "有点喜欢你专辑"
+      ),
+    ),
+  ]);
 
   @override
   void initState() {
