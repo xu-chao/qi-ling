@@ -50,6 +50,9 @@ dev_dependencies:
 
   # 录音
   # flutter_sound: ^9.2.13
+  audio_session: ^0.1.14
+  audio_service: ^0.18.9
+  rxdart: ^0.27.2
   # 音频播放
   just_audio: ^0.9.36
   just_audio_background: ^0.0.1-beta.11

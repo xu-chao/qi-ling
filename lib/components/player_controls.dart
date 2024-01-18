@@ -7,6 +7,7 @@ import 'package:audio_session/audio_session.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:qiling/components/player_common.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 
 import '../main.dart';
 
@@ -19,6 +20,7 @@ class PlayerControls extends StatefulWidget {
 
 class _PlayerControlsState extends State<PlayerControls>
     with TickerProviderStateMixin {
+  static int _nextMediaId = 0;
   late AnimationController iconAnimController;
   late bool isPlaying;
   late bool isShuffle;
@@ -26,6 +28,18 @@ class _PlayerControlsState extends State<PlayerControls>
   late double sliderValue;
 
   final _player = AudioPlayer();
+
+  final _playlist = ConcatenatingAudioSource(children: [
+    ClippingAudioSource(
+      start: const Duration(seconds: 60),
+      end: const Duration(seconds: 90),
+      child: AudioSource.asset("assets/sounds/jay.mp3"),
+      tag: MediaItem(
+        id: '${_nextMediaId++}',
+        album: "祈·聆",
+        title: "白噪音",
+        artUri: Uri.parse("asset:///assets/images/qiling.jpg"),),)
+  ]);
 
   @override
   void initState() {
@@ -102,7 +116,8 @@ class _PlayerControlsState extends State<PlayerControls>
           }
         });
     try {
-      await _player.setAsset('assets/sounds/jay.mp3');
+      await _player.setAudioSource(_playlist);
+      // await _player.setAsset('assets/sounds/jay.mp3');
     } catch (e) {
       if (kDebugMode) {
         print('播放报错: $e');
