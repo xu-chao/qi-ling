@@ -45,8 +45,7 @@ class _PlayerControlsState extends State<PlayerControls>
           displayDescription: "有点喜欢你专辑"
       ),
     ),
-    AudioSource.asset(
-      "assets/sounds/jay.mp3",
+    AudioSource.asset("assets/sounds/jay.mp3",
       tag: MediaItem(
           id: '${_nextMediaId++}',
           album: "祈·聆",
