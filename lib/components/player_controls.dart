@@ -40,7 +40,7 @@ class _PlayerControlsState extends State<PlayerControls>
             album: "祈·聆",
             title: "白噪音",
             // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
-            artUri: Uri.parse('https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg'),
+            artUri: Uri.parse('https://p1.music.126.net/iFZ_nw2V86IFk90dc50kdQ==/109951166961388699.jpg?param=300y300'),
             artist: "齐玲",
             genre: "空灵",
             displayTitle: "有点喜欢你",
