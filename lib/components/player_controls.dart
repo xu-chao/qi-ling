@@ -29,17 +29,20 @@ class _PlayerControlsState extends State<PlayerControls>
 
   final _player = AudioPlayer();
 
-  final _playlist = ConcatenatingAudioSource(children: [
-    ClippingAudioSource(
-      // start: const Duration(seconds: 60),
-      // end: const Duration(seconds: 90),
-      child: AudioSource.asset("assets/sounds/jay.mp3"),
-      tag: MediaItem(
-        id: '${_nextMediaId++}',
-        album: "祈·聆",
-        title: "白噪音",
-        artUri: Uri.parse('https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg'),),)
-  ]);
+  final _playlist = ConcatenatingAudioSource(
+      children: [
+        ClippingAudioSource(
+          // start: const Duration(seconds: 60),
+          // end: const Duration(seconds: 90),
+          child: AudioSource.asset("assets/sounds/jay.mp3"),
+          tag: MediaItem(
+            id: '${_nextMediaId++}',
+            album: "祈·聆",
+            title: "白噪音",
+            artUri: Uri.parse('https://media.wnyc.org/i/1400/1400/l/80/1/ScienceFriday_WNYCStudios_1400.jpg'),
+          ),
+        )
+      ]);
 
   @override
   void initState() {
