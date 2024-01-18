@@ -31,11 +31,11 @@ class _PlayerControlsState extends State<PlayerControls>
 
   final _playlist = ConcatenatingAudioSource(children: [
     ClippingAudioSource(
-      child: AudioSource.asset("assets/sounds/jay.mp3"),
+      child: AudioSource.asset("assets/sounds/喜欢你.mp3"),
       tag: MediaItem(
           id: '${_nextMediaId++}',
           album: "祈·聆",
-          title: "想去了解你",
+          title: "喜欢你",
           // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
           // artUri: Uri.parse('https://p1.music.126.net/iFZ_nw2V86IFk90dc50kdQ==/109951166961388699.jpg?param=300y300'),
           artUri: Uri.parse('http://150.158.103.146/qiling/qiling.jpg'),
@@ -46,11 +46,11 @@ class _PlayerControlsState extends State<PlayerControls>
           displayDescription: "有点喜欢你专辑"
       ),
     ),
-    AudioSource.asset("assets/sounds/jay.mp3",
+    AudioSource.asset("assets/sounds/总有一天你会出现在我身边.mp3",
       tag: MediaItem(
           id: '${_nextMediaId++}',
           album: "祈·聆",
-          title: "有点喜欢你",
+          title: "总有一天你会出现在我身边",
           // artUri: Uri.file('../assets/images/qiling.jpg', windows: false),
           artUri: Uri.parse('http://150.158.103.146/qiling/qiling.jpg'),
           artist: "许超",
