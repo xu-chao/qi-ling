@@ -46,7 +46,7 @@ class _PlayerControlsState extends State<PlayerControls>
           displayDescription: "有点喜欢你专辑"
       ),
     ),
-    AudioSource.asset("assets/sounds/总有一天你会出现在我身边.mp3",
+    AudioSource.asset("assets/sounds/总有一天你会出现在我身边.m4a",
       tag: MediaItem(
           id: '${_nextMediaId++}',
           album: "祈·聆",
