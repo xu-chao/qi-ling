@@ -97,7 +97,7 @@ Widget selectedCategorySection({
                 child: IconButton(
                   onPressed: () {
                     trigger();
-                    BotToast.showText(text:"有点喜欢你");
+                    // BotToast.showText(text:"有点喜欢你");
                   },
                   icon: database[activeIndex].categoryIcon,
                   iconSize: leftActive ? 35 : 30,
