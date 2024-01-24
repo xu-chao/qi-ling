@@ -6,7 +6,10 @@ class RoutePath {
   /// 捐赠
   static const kDonate = "/donate/donate";
 
-  /// NewYear Web登录
-  static const kNewYearWebLogin = "/settings/account/bilibili/web_login";
+  /// NewYear
+  static const kNewYearWeb = "/web/year";
+
+  /// Game
+  static const kGameWeb = "/web/game";
 
 }

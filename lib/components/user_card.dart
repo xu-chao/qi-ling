@@ -57,17 +57,10 @@ Widget userCard() {
               ),
             ),
             onTap: (){
-              Get.toNamed(RoutePath.kNewYearWebLogin);
-              // InAppWebView(
-              //   initialUrlRequest: URLRequest(url: Uri.parse('http://150.158.103.146/qiling/NewYear/')),
-              //   onLoadStop: (controller, url) async {
-              //     // 加载完成
-              //     inAppWebViewController = controller;
-              //     print("加载地址：$url");
-              //     var html = await controller.getHtml();
-              //     debugPrint("html是：${html.toString().trim()}");
-              //   },
-              // );
+              Get.toNamed(RoutePath.kNewYearWeb);
+            },
+            onDoubleTap: () {
+              Get.toNamed(RoutePath.kGameWeb);
             },
           )
         ),

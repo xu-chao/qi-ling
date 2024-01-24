@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class NewYearWebLoginController {
+class NewYearWebController {
   InAppWebViewController? webViewController;
   final CookieManager cookieManager = CookieManager.instance();
   Future<void> onWebViewCreated(InAppWebViewController controller) async {

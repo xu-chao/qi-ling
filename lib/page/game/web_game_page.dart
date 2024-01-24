@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
-import 'package:qiling/page/web/web_new_year_controller.dart';
+import 'package:qiling/page/game/web_game_controller.dart';
 
-class NewYearWebPage extends GetView<NewYearWebController> {
-  const NewYearWebPage({Key? key}) : super(key: key);
+class GameWebPage extends GetView<GameWebController> {
+  const GameWebPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("总喜欢做一些傻事去表达自己"),
+        title: const Text("希望你能够开心"),
       ),
       body: InAppWebView(
         onWebViewCreated: controller.onWebViewCreated,

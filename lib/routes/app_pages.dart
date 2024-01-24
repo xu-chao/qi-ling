@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 
+import '../page/donate/donate_page.dart';
+import '../page/game/web_game_controller.dart';
+import '../page/game/web_game_page.dart';
 import '../page/web/web_new_year_controller.dart';
 import '../page/web/web_new_year_page.dart';
-import '../page/donate/donate_page.dart';
 import 'route_path.dart';
 
 class AppPages {
@@ -17,12 +19,20 @@ class AppPages {
     //     //BindingsBuilder.put(() => HomeController()),
     //   ],
     // ),
-    //哔哩哔哩Web登录
+    //本地html页面
     GetPage(
-      name: RoutePath.kNewYearWebLogin,
-      page: () => const NewYearWebLoginPage(),
+      name: RoutePath.kNewYearWeb,
+      page: () => const NewYearWebPage(),
       bindings: [
-        BindingsBuilder.put(() => NewYearWebLoginController()),
+        BindingsBuilder.put(() => NewYearWebController()),
+      ],
+    ),
+    //音游页面
+    GetPage(
+      name: RoutePath.kGameWeb,
+      page: () => const GameWebPage(),
+      bindings: [
+        BindingsBuilder.put(() => GameWebController()),
       ],
     ),
     //捐赠

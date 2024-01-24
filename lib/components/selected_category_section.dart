@@ -10,6 +10,8 @@ import '../main.dart';
 import './selected_category_card.dart';
 import './items_list.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:get/get.dart';
+import '../routes/route_path.dart';
 
 Widget selectedCategorySection({
   required int activeIndex,
@@ -98,6 +100,7 @@ Widget selectedCategorySection({
                   onPressed: () {
                     trigger();
                     // BotToast.showText(text:"有点喜欢你");
+                    // Get.toNamed(RoutePath.kGameWeb);
                   },
                   icon: database[activeIndex].categoryIcon,
                   iconSize: leftActive ? 35 : 30,
