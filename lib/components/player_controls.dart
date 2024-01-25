@@ -20,14 +20,13 @@ class PlayerControls extends StatefulWidget {
 
 class _PlayerControlsState extends State<PlayerControls>
     with TickerProviderStateMixin {
+  late AudioPlayer _player;
   static int _nextMediaId = 0;
   late AnimationController iconAnimController;
   late bool isPlaying;
   late bool isShuffle;
   late bool isBoostAudio;
   late double sliderValue;
-
-  final _player = AudioPlayer();
 
   final _playlist = ConcatenatingAudioSource(children: [
     ClippingAudioSource(
@@ -65,6 +64,7 @@ class _PlayerControlsState extends State<PlayerControls>
   @override
   void initState() {
     super.initState();
+    _player = AudioPlayer();
     isPlaying = false;
     iconAnimController = AnimationController(vsync: this, duration: fast);
     sliderValue = 0;
@@ -234,33 +234,33 @@ class _PlayerControlsState extends State<PlayerControls>
             child: AnimatedOpacity(
               duration: fast,
               opacity: leftActive ? 0 : 1,
-              // child: boostAudioIcon(leftActive ? 0 : 15),
-              child: StreamBuilder<LoopMode>(
-                stream: _player.loopModeStream,
-                builder: (context, snapshot) {
-                  final double sizeIcon = leftActive ? 0 : 15;
-                  final loopMode = snapshot.data ?? LoopMode.off;
-                  final icons = [
-                    Icon(Icons.repeat, color: Colors.grey, size: sizeIcon),
-                    Icon(Icons.repeat, color: Colors.orange, size: sizeIcon),
-                    Icon(Icons.repeat_one, color: Colors.orange, size: sizeIcon),
-                  ];
-                  const cycleModes = [
-                    LoopMode.off,
-                    LoopMode.all,
-                    LoopMode.one,
-                  ];
-                  final index = cycleModes.indexOf(loopMode);
-                  return IconButton(
-                    icon: icons[index],
-                    onPressed: () {
-                      _player.setLoopMode(cycleModes[
-                      (cycleModes.indexOf(loopMode) + 1) %
-                          cycleModes.length]);
-                    },
-                  );
-                },
-              ),
+              child: boostAudioIcon(leftActive ? 0 : 15),
+              // child: StreamBuilder<LoopMode>(
+              //   stream: _player.loopModeStream,
+              //   builder: (context, snapshot) {
+              //     final double sizeIcon = leftActive ? 0 : 15;
+              //     final loopMode = snapshot.data ?? LoopMode.off;
+              //     final icons = [
+              //       Icon(Icons.repeat, color: Colors.grey[600], size: sizeIcon),
+              //       Icon(Icons.repeat, color: Colors.blue, size: sizeIcon),
+              //       Icon(Icons.repeat_one, color: Colors.blue, size: sizeIcon),
+              //     ];
+              //     const cycleModes = [
+              //       LoopMode.off,
+              //       LoopMode.all,
+              //       LoopMode.one,
+              //     ];
+              //     final index = cycleModes.indexOf(loopMode);
+              //     return IconButton(
+              //       icon: icons[index],
+              //       onPressed: () {
+              //         _player.setLoopMode(cycleModes[
+              //         (cycleModes.indexOf(loopMode) + 1) %
+              //             cycleModes.length]);
+              //       },
+              //     );
+              //   },
+              // ),
             ),
           ),
           AnimatedContainer(
@@ -339,33 +339,33 @@ class _PlayerControlsState extends State<PlayerControls>
                   child: AnimatedOpacity(
                     duration: fast,
                     opacity: leftActive ? 1 : 0,
-                    // child: boostAudioIcon(leftActive ? 15 : 0),
-                    child: StreamBuilder<LoopMode>(
-                      stream: _player.loopModeStream,
-                      builder: (context, snapshot) {
-                        final double sizeIcon = leftActive ? 0 : 15;
-                        final loopMode = snapshot.data ?? LoopMode.off;
-                        final icons = [
-                          Icon(Icons.repeat, color: Colors.grey, size: sizeIcon),
-                          Icon(Icons.repeat, color: Colors.orange, size: sizeIcon),
-                          Icon(Icons.repeat_one, color: Colors.orange, size: sizeIcon),
-                        ];
-                        const cycleModes = [
-                          LoopMode.off,
-                          LoopMode.all,
-                          LoopMode.one,
-                        ];
-                        final index = cycleModes.indexOf(loopMode);
-                        return IconButton(
-                          icon: icons[index],
-                          onPressed: () {
-                            _player.setLoopMode(cycleModes[
-                            (cycleModes.indexOf(loopMode) + 1) %
-                                cycleModes.length]);
-                          },
-                        );
-                      },
-                    ),
+                    child: boostAudioIcon(leftActive ? 15 : 0),
+                    // child: StreamBuilder<LoopMode>(
+                    //   stream: _player.loopModeStream,
+                    //   builder: (context, snapshot) {
+                    //     final double sizeIcon = leftActive ? 0 : 15;
+                    //     final loopMode = snapshot.data ?? LoopMode.off;
+                    //     final icons = [
+                    //       Icon(Icons.repeat, color: Colors.grey[600], size: sizeIcon),
+                    //       Icon(Icons.repeat, color: Colors.blue, size: sizeIcon),
+                    //       Icon(Icons.repeat_one, color: Colors.blue, size: sizeIcon),
+                    //     ];
+                    //     const cycleModes = [
+                    //       LoopMode.off,
+                    //       LoopMode.all,
+                    //       LoopMode.one,
+                    //     ];
+                    //     final index = cycleModes.indexOf(loopMode);
+                    //     return IconButton(
+                    //       icon: icons[index],
+                    //       onPressed: () {
+                    //         _player.setLoopMode(cycleModes[
+                    //         (cycleModes.indexOf(loopMode) + 1) %
+                    //             cycleModes.length]);
+                    //       },
+                    //     );
+                    //   },
+                    // ),
                   ),
                 ),
                 const SizedBox(width: 5,),
