@@ -128,3 +128,6 @@ flutter:
     - family: CategoryIcons
       fonts:
         - asset: assets/icons/category_icons.ttf
+    - family: IconFonts
+      fonts:
+        - asset: assets/icons/iconfont.ttf
