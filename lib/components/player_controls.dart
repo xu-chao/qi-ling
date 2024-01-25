@@ -70,6 +70,8 @@ class _PlayerControlsState extends State<PlayerControls>
     sliderValue = 0;
     isShuffle = false;
     isBoostAudio = false;
+
+    _init();
   }
 
   // This function displays SeekBar
@@ -117,6 +119,25 @@ class _PlayerControlsState extends State<PlayerControls>
     }
   }
 
+  Future<void> _init() async {
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.speech());
+    // Listen to errors during playback.
+    _player.playbackEventStream.listen((event) {},
+        onError: (Object e, StackTrace stackTrace) {
+          if (kDebugMode) {
+            print('播放报错: $e');
+          }
+        });
+    try {
+      await _player.setAudioSource(_playlist);
+    } catch (e, stackTrace) {
+      if (kDebugMode) {
+        print('播放报错: $e');
+      }
+    }
+  }
+
   Stream<PositionData> get _positionDataStream =>
       Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
           _player.positionStream,
@@ -128,22 +149,6 @@ class _PlayerControlsState extends State<PlayerControls>
   /// 播放白噪音
   void playSound() async {
     _player.play();
-    final session = await AudioSession.instance;
-    await session.configure(const AudioSessionConfiguration.speech());
-    _player.playbackEventStream.listen((event) {},
-        onError: (Object e, StackTrace stackTrace) {
-          if (kDebugMode) {
-            print('播放报错: $e');
-          }
-        });
-    try {
-      await _player.setAudioSource(_playlist);
-      // await _player.setAsset('assets/sounds/jay.mp3');
-    } catch (e) {
-      if (kDebugMode) {
-        print('播放报错: $e');
-      }
-    }
     setState(() {
       isPlaying = true;
     });
