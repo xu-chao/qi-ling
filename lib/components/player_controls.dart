@@ -27,6 +27,7 @@ class _PlayerControlsState extends State<PlayerControls>
   late bool isShuffle;
   late bool isBoostAudio;
   late double sliderValue;
+  final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   final _playlist = ConcatenatingAudioSource(children: [
     ClippingAudioSource(
@@ -136,6 +137,28 @@ class _PlayerControlsState extends State<PlayerControls>
         print('播放报错: $e');
       }
     }
+    _player.positionDiscontinuityStream.listen((discontinuity) {
+      if (discontinuity.reason == PositionDiscontinuityReason.autoAdvance) {
+        _showItemFinished(discontinuity.previousEvent.currentIndex);
+      }
+    });
+    _player.processingStateStream.listen((state) {
+      if (state == ProcessingState.completed) {
+        _showItemFinished(_player.currentIndex);
+      }
+    });
+  }
+
+  void _showItemFinished(int? index) {
+    if (index == null) return;
+    final sequence = _player.sequence;
+    if (sequence == null) return;
+    final source = sequence[index];
+    final metadata = source.tag as MediaItem;
+    _scaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
+      content: Text('完成播放 ${metadata.title}'),
+      duration: const Duration(seconds: 1),
+    ));
   }
 
   Stream<PositionData> get _positionDataStream =>
