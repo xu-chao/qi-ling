@@ -159,6 +159,9 @@ class _PlayerControlsState extends State<PlayerControls>
       content: Text('完成播放 ${metadata.title}'),
       duration: const Duration(seconds: 1),
     ));
+    setState(() {
+      isPlaying = false;
+    });
   }
 
   Stream<PositionData> get _positionDataStream =>
