@@ -62,6 +62,9 @@ Widget userCard() {
             onDoubleTap: () {
               Get.toNamed(RoutePath.kGameWeb);
             },
+            onLongPress: () {
+              Get.toNamed(RoutePath.kLove);
+            },
           )
         ),
       ],

@@ -12,4 +12,7 @@ class RoutePath {
   /// Game
   static const kGameWeb = "/web/game";
 
+  /// Love
+  static const kLove = "/love/love";
+
 }

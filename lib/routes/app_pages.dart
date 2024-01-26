@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../page/donate/donate_page.dart';
 import '../page/game/web_game_controller.dart';
 import '../page/game/web_game_page.dart';
+import '../page/love/love_page.dart';
 import '../page/web/web_new_year_controller.dart';
 import '../page/web/web_new_year_page.dart';
 import 'route_path.dart';
@@ -34,6 +35,11 @@ class AppPages {
       bindings: [
         BindingsBuilder.put(() => GameWebController()),
       ],
+    ),
+    //Love
+    GetPage(
+      name: RoutePath.kLove,
+      page: () => const LovePage()
     ),
     //捐赠
     GetPage(
